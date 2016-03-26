@@ -3,8 +3,6 @@ Created on Mar 25, 2016
 
 @author: Mohammad Hashemi
 '''
-import sys
-print sys.path
 from synchronization.sync import synchronized
 class CabSharing(object):
     __instance=None
