@@ -41,7 +41,7 @@ class CabSharing(object):
         
         
     def __startlistener(self): #old method name: listener
-        self.__listenerSocket.listen()
+        self.__listenerSocket.runThread()
     def matchGroup(self,booking):
         pass
     def addBookingToGrid(self,booking):
