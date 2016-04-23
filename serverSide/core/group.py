@@ -18,24 +18,33 @@ class Group:
         self.__cancelled=None
         
     def notifyDriver(self,msg):
-        pass
+        self.__driver.notify(msg)
     def notifyPassenger(self,passenger,msg):
-        pass
+        passenger.notify(msg)
     def terminate(self,summary):
+#         ??????????
         pass
     def calculatePayment(self,summary):
+#         ??????????
         pass
     def updateGroup(self,ttype,b):
+#         What is type?
         pass
     def calculateFines(self,booking):
+#         
         pass
     def updateDriver(self,driver, ttype):
+#         I don't remember it!!!!
         pass
     def getPassengerSub(self):
-        pass
+        return self.__passengerSub
     def getDriverSub(self):
-        pass
+        return self.__driverSub
     def hasCancelled(self):
-        pass
+        if self.__cancelled==True:
+            return True
+        return False
     def isFull(self):
-        pass
+        if self.__full==True:
+            return True
+        return False
