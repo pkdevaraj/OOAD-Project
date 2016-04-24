@@ -7,7 +7,7 @@ class Group:
     def __init__(self,grp,dur,distance,esti,time):
         self.__groupID=grp
         self.duration=dur
-        self.__bookings=None
+        self.__bookings=[]
         self.__distance=distance
         self.__estimatedCost=esti
         self.__full=None
@@ -16,7 +16,13 @@ class Group:
         self.__passengerSub=None
         self.__driverSub=None
         self.__cancelled=None
-        
+    def getGroupDetails(self):
+        res={}
+        res['groupID']=self.__groupID
+        res['duration']=self.duration
+        res['distance']=self.__distance
+        res['estimatedCost']=self.__estimatedCost
+        return res
     def notifyDriver(self,msg):
         self.__driver.notify(msg)
     def notifyPassenger(self,passenger,msg):
@@ -28,8 +34,10 @@ class Group:
 #         ??????????
         pass
     def updateGroup(self,ttype,b):
-#         What is type?
-        pass
+        if ttype=='add':
+            self.__bookings.append(b)
+        if ttype=='delete':
+            self.__bookings.remove(b)
     def calculateFines(self,booking):
 #         
         pass

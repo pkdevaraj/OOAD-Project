@@ -6,6 +6,8 @@ Created on Mar 25, 2016
 from synchronization.sync import synchronized
 from handler.DBManager import DBManager
 from cabSocket.listenerSocket import ListenerSocket
+import math
+import json
 class CabSharing(object):
     __instance=None
     
@@ -19,7 +21,8 @@ class CabSharing(object):
     #constructor
     def __init__(self):
         self.__users={}
-        self.__bookingGrid=None
+        self.__PbookingGrid=None #pick up booking grid
+        self.__DbookingGrid=None #drop off booking grid
         self.__driverGrid=None
         self.__cancelledBookings={}
         self.__groups={}
@@ -45,22 +48,35 @@ class CabSharing(object):
     def matchGroup(self,booking):
         pass
     def addBookingToGrid(self,booking):
+        (pickup,dropoff)=booking.getPickupAndDropoff()
         
         """
-        40.01047, -105.2736   <<< ---- >>> 40.01147, -105.2836 
+        40.01047, -105.2736   <<< ---- >>> 40.02047, -105.2836
+                x between 35 to 45
+                y between -110 to -100 
         """
-        pass
-    def cancelBooking(self,bID):
-        pass
-    def __broadcastGroup(self):
-        pass
+
+        index1=int(math.floor((pickup[0]-35)*100))
+        index2=int(math.floor((pickup[1]+110)*100))
+        self.__PbookingGrid[index1][index2].append(booking)
+        
+        index1=int(math.floor((dropoff[0]-35)*100))
+        index2=int(math.floor((dropoff[1]+110)*100))
+        self.__DbookingGrid[index1][index2].append(booking)
+        
+    
+    def __broadcastGroup(self,group):
+        msg=json.dumps(group.getGroupDetails())
+        for d in self.__driverGrid:
+            d.notify(msg)
     def endTrip(self,summary):
         pass
     def __bookingEventHandler(self):
         pass
-    def cancellingEventHandler(self):
-        pass
+   
     def __addToEventList(self,ttype,booking):
+        if ttype=='booking':
+            self.__bookingEventList
         pass
     def __removeFromEventList(self,ttype,booking):
         pass
@@ -70,7 +86,12 @@ class CabSharing(object):
         return self.__users[ID]
     def getGroupFromID(self,ID):
         return self.__groups[ID]
-    
+    def cancelBooking(self,bID):
+        #no need to be implemented
+        pass
+    def cancellingEventHandler(self):
+        #no need to be implemented
+        pass
         
 if __name__ == '__main__':
     print "server is started ..."
