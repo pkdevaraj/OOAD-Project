@@ -34,6 +34,7 @@ class Group:
     def getPassengerSub(self):
         pass
     def getDriverSub(self):
+        return self.__driver()
         pass
     def hasCancelled(self):
         pass
