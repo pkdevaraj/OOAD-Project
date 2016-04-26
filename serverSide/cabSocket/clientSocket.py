@@ -34,7 +34,7 @@ class ClientSocket:
             dataDict=json.loads(data)
             print dataDict
             self.parseCommands(self, dataDict)
-        pass
+        
 
     def send(self,msg):
         totalsent = 0
@@ -44,19 +44,19 @@ class ClientSocket:
             if sent == 0:
                 raise RuntimeError("socket connection broken")
             totalsent = totalsent + sent
-        pass
+        
 
     def getSocket(self):
         return self.__socket
-        pass
+        
 
     def setSocket(self,socket):
         self.__socket = socket
-        pass
+        
 
     @abstractmethod
     def parseCommands(self,query):
-        pass
+        
 
     @abstractmethod
     def signup(name, self, email, userProfile):
@@ -91,12 +91,12 @@ class ClientSocketPassenger(ClientSocket):
                 userProfile = query['userProfile']
                 
             ClientSocket.singup(name, ClientSocket, email, userProfile)
-        pass
+        
 
     def signup(name, self, email, userProfile):
         ClientSocket.signup(self, userProfile)
         ClientSocket.__user = Passenger(name, self, email, userProfile)        
-        pass
+        
     
 class ClientSocketDriver(ClientSocket):    
 
@@ -125,10 +125,8 @@ class ClientSocketDriver(ClientSocket):
         if query['function']=='selectGroup':
             self.__user.selectGroup(self, query['id'])
         if query['function']=='setHomeLocation':
-            self.__user.setHomeLocation(self, query['homelocation'])
-        pass
+            self.__user.setHomeLocation(self, query['homelocation']) 
 
     def signup(name, self, email, userProfile):
         ClientSocket.signup(self, userProfile)
         ClientSocket.__user = Driver(name, self, email, userProfile)
-        pass
