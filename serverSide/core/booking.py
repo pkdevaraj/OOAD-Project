@@ -15,13 +15,23 @@ class Booking:
         self.__accompanyingWith=accomp
         self.__gid=grp
     def getBookingDetails(self):
-        pass
+        res={}
+        res['refID']=self.__refID
+        res['passenger']=self.__passenger
+        res['pickupLocation']=self.__pickupLocation
+        res['dropoffLocation']=self.__dropoffLocation
+        res['timeInterval']=self.__timeInterval
+        res['rating']=self.__rating
+        res['sharedWith']=self.__sharedWith
+        res['accompanyingWith']=self.__accompanyingWith
+        res['gid']=self.__gid
     def getTimeInterval(self):
-        pass
+        return self.__timeInterval
     def getPassenger(self):
-        pass
+        return self.__passenger
     def getPickupAndDropoff(self):
-        pass
+        PDTouple =(self.__pickupLocation,self.__dropoffLocation)
+        return PDTouple
     def updateGroupID(self,ID):
-        pass
+        self.__gid=ID
     
