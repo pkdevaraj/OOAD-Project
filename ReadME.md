@@ -18,4 +18,9 @@ This file contains the steps to Download, Build and Run the application.
 * Download the android code and import the project into Android Studio
 * Start an instance of Mongodb by running "sudo mongod" command
 * Download the Server Code and run cabSharing.py using "python cabSharing.py" command
-* Enter the API key in AndroidManifest.xml file abd build and install the application on the target device.
+* Enter the API key in AndroidManifest.xml file and build and install the application on the target device.
+
+##Authors
+* Mohammad Hashemi
+* Praveen Kumar Devaraj
+* Nachiket Bhagawat
