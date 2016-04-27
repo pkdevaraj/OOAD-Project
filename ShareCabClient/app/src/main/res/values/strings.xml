@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ShareCab</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_drop_off">Map</string>
+    <string name="title_activity_destinationmap">Map</string>
+    <string name="title_activity_drivermap">Map</string>
+    <string name="title_activity_driverdropoff">Map</string>
+</resources>
