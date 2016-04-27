@@ -1,6 +1,11 @@
 ##**Readme**
 
-This file contains the steps to Download, Build and Run the application.
+####Project Title
+Cab Sharing with people from same locality travelling to the same destination.
+#####Description
+A platform to share the cab with other users in the same locality looking for cab in
+the same time and travelling to the same destination.This takes multiple bookings and finds the
+shortest path to pick up all the users and split the fare among the users.
 
 ###Pre-requisites for Server
 * Install MongoDB  from [here](https://docs.mongodb.org/manual/installation/)
